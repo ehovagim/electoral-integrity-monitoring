@@ -32,19 +32,24 @@
     <section class="hero">
       <div class="wrap">
         <p class="kicker">University of California, Berkeley · 2026</p>
-        <h1>Measuring coordinated information operations during a live democratic event — defensively, transparently, and at platform scale.</h1>
+        <h1>A detection study of coordinated information operations during Brazil's 2026 election runoff.</h1>
         <p class="lede">
-          The 2026 Brazilian general election culminates in a runoff on October 25, preceded by a
-          legally mandated campaign blackout beginning October 24. This program develops and validates
-          a read-only detection methodology for the documented operation classes of this election cycle —
-          counterfeit official broadcasts, coordinated rumor cascades, synthetic impersonation, and
-          paid content delivered during the blackout — using the Meta Content Library and API within
-          the Meta Secure Research Environment.
+          Brazil's 2026 general election ends with a runoff on October 25, preceded by a
+          legally mandated campaign blackout beginning October 24. The first round and the
+          2024 municipal elections documented a stable set of coordinated operations on
+          Brazilian social media: cloned candidate videos, counterfeit "official results"
+          livestreams that funnel viewers into Pix payment scams, coordinated rumor
+          cascades, and synthetic media amplified by inauthentic engagement. Facebook and
+          Instagram are two of the most-used platforms in the country, and independent
+          measurement of these operations during the blackout window is currently
+          difficult. This program builds and validates a read-only detection methodology
+          for these operation classes, using the Meta Content Library and API inside the
+          Meta Secure Research Environment.
         </p>
         <div class="hero-facts">
           <div><strong>Window</strong><span>Oct 20 – Nov 10, 2026</span></div>
           <div><strong>Surfaces</strong><span>Public FB Pages &amp; Groups, Instagram, Ad Library</span></div>
-          <div><strong>Posture</strong><span>Read-only · defensive · aggregate-only exports</span></div>
+          <div><strong>Posture</strong><span>Read-only, defensive, aggregate-only exports</span></div>
         </div>
       </div>
     </section>
@@ -53,74 +58,91 @@
       <section id="about">
         <h2>About the program</h2>
         <p>
-          Brazil's Superior Electoral Court (TSE) treats coordinated disinformation as a first-order
-          threat to the 2026 election. The 2024 municipal elections and the 2026 first round documented
-          a stable repertoire of operations: cloned candidate videos, counterfeit "official results"
-          livestreams monetized through Pix payment scams, coordinated rumor cascades, and synthetic
-          narratives amplified by inauthentic engagement. Facebook and Instagram are among the most-used
-          platforms in Brazil, yet independent measurement of these operations during the legally
-          sensitive blackout window remains difficult.
+          Brazil's Superior Electoral Court (TSE) treats coordinated disinformation as a
+          first-order threat to the 2026 election. The operations documented in the 2024
+          municipal elections and the 2026 first round share a common structure: cloned
+          candidate videos, counterfeit official-results livestreams monetized through
+          Pix scams, coordinated rumor cascades, and synthetic narratives amplified by
+          inauthentic engagement. They concentrate in the blackout window, when campaigns
+          are legally barred from responding and false claims about results face no
+          counter-speech.
         </p>
         <p>
-          This research program closes that measurement gap. It pairs large-scale lawful access to
-          public content (via the Meta Content Library and API) with transparent, auditable detectors
-          adapted from <em>Vigia</em>, the applicant's prototype monitoring system, producing validated
-          detection methods that civil-society monitors in other democracies can reuse.
+          The goal of this program is to close the measurement gap on the platforms where
+          these operations are least visible to independent researchers. We combine lawful
+          access to public content through the Meta Content Library and API with
+          transparent, auditable detectors adapted from Vigia, our prototype monitoring
+          system. The intended contribution is a validated detection method that
+          civil-society monitors in other democracies can reuse.
         </p>
       </section>
 
       <section id="questions">
         <h2>Research questions</h2>
         <ol class="rq">
-          <li><strong>Prevalence.</strong> What is the measured volume and growth of election-integrity-relevant
-            public content (false-results claims, impersonation of official bodies, vote-buying solicitation,
-            incitement) during the blackout-and-runoff window, compared to a baseline period?</li>
-          <li><strong>Coordination.</strong> To what extent do documented operation classes exhibit cross-page and
-            cross-platform coordination structures — repeated content, synchronized timing, shared link domains —
-            visible in public content metadata?</li>
-          <li><strong>Paid surface.</strong> What volume of paid political advertising is delivered during the legally
-            mandated blackout — itself a TSE violation — and how is it distributed across advertisers and regions?</li>
-          <li><strong>Method.</strong> What precision and detection latency do transparent rule-based detectors achieve
-            against researcher-verified ground truth during a live event, and how should severity thresholds be
-            calibrated for operational monitoring?</li>
+          <li><strong>Prevalence.</strong> What is the measured volume and growth of
+            election-integrity-relevant public content (false-results claims, impersonation
+            of official bodies, vote-buying solicitation, incitement) during the blackout
+            and runoff window, compared to a baseline period?</li>
+          <li><strong>Coordination.</strong> To what extent do documented operation classes
+            (counterfeit broadcasts, rumor cascades, synthetic impersonation) show
+            cross-page and cross-platform coordination in public content metadata, such as
+            repeated text, synchronized timing, and shared link domains?</li>
+          <li><strong>Paid surface.</strong> What volume of paid political advertising is
+            delivered during the legally mandated blackout, when such delivery is itself a
+            TSE violation, and how is it distributed across advertisers and regions?</li>
+          <li><strong>Method.</strong> What precision and detection latency do transparent,
+            rule-based detectors achieve against researcher-verified ground truth during a
+            live event, and how should severity thresholds be calibrated for operational
+            monitoring?</li>
         </ol>
       </section>
 
       <section id="methods">
         <h2>Methods</h2>
         <p>
-          Quantitative content analysis with computational detection, conducted entirely inside the Meta Secure
-          Research Environment. Observation spans a baseline week and the event window (blackout eve through
-          certification), extending into post-event weeks for lifecycle measurement.
+          The study uses quantitative content analysis with computational detection,
+          conducted entirely inside the Meta Secure Research Environment. Observation
+          covers a baseline week, the event window from blackout eve through
+          certification, and post-event weeks for lifecycle measurement.
         </p>
         <ul>
-          <li><strong>Collection.</strong> Read-only Content Library API queries: Portuguese-language keyword and
-            hashtag panels (<em>fraude, apuração, resultado oficial</em>, candidate and institution names), target
-            panels of public pages and groups documented by Brazilian fact-checkers and the TSE, and Ad Library
-            queries for paid content — all within the 500k items / 7-day API budget.</li>
-          <li><strong>Detection.</strong> Transparent detectors: near-duplicate text clustering, coordinated-timing
-            cascades, impersonation heuristics, audience-anomaly signals. No generative models; classifiers are
-            read-only and every verdict is inspectable.</li>
-          <li><strong>Ground truth.</strong> Stratified samples of flagged clusters are independently coded against a
-            published codebook; precision and detection latency are reported per detector class.</li>
-          <li><strong>Analysis.</strong> Volume curves by class and window; network analysis of cross-page content
-            reuse; advertiser concentration; detector evaluation.</li>
+          <li><strong>Collection.</strong> Read-only Content Library API queries in
+            Portuguese: keyword and hashtag panels (fraude, apuração, resultado oficial,
+            candidate and institution names), target panels of public pages and groups
+            documented by Brazilian fact-checkers and the TSE, and Ad Library queries for
+            paid content. Retrieval stays within the 500,000-item weekly API budget.</li>
+          <li><strong>Detection.</strong> Transparent detectors: near-duplicate text
+            clustering, coordinated-timing cascades, impersonation heuristics, and
+            audience-anomaly signals. No generative models are used, and every verdict is
+            inspectable.</li>
+          <li><strong>Ground truth.</strong> Stratified samples of flagged clusters are
+            independently coded against a published codebook. We report precision and
+            detection latency per detector class.</li>
+          <li><strong>Analysis.</strong> Volume curves by class and window, network
+            analysis of cross-page content reuse, advertiser concentration, and detector
+            evaluation.</li>
         </ul>
       </section>
 
       <section id="ethics">
         <h2>Data protection &amp; ethics</h2>
         <ul>
-          <li><strong>Read-only charter.</strong> No posting, no account interaction, no deanonymization of private
-            individuals. Analysis is restricted to public content and platform-provided metadata.</li>
-          <li><strong>Enclave discipline.</strong> All queries execute inside the Meta Secure Research Environment;
-            only aggregate results leave the enclave. No raw post content is downloaded to local infrastructure.</li>
-          <li><strong>Human subjects.</strong> Aggregate-level analysis of public content; no individual profiling.
-            IRB guidance is being sought through UC Berkeley's Office for the Protection of Human Subjects.</li>
-          <li><strong>Legal context.</strong> Research use complies with Brazil's LGPD as applied to publicly
-            available information for research purposes (Art. 7, XI; Art. 11, §2º, III).</li>
-          <li><strong>Outputs.</strong> Open working papers, a methods paper on detector validation, and aggregated
-            artifacts shared with Brazilian fact-checking organizations (Aos Fatos, Comprova, Lupa).</li>
+          <li><strong>Read-only charter.</strong> No posting, no account interaction, and
+            no deanonymization of private individuals. Analysis is restricted to public
+            content and platform-provided metadata.</li>
+          <li><strong>Enclave discipline.</strong> All queries execute inside the Meta
+            Secure Research Environment, and only aggregate results leave the enclave. No
+            raw post content is downloaded to local infrastructure.</li>
+          <li><strong>Human subjects.</strong> The study analyzes public content at the
+            aggregate level and does not profile individuals. IRB guidance is being sought
+            through UC Berkeley's Office for the Protection of Human Subjects.</li>
+          <li><strong>Legal context.</strong> Research use complies with Brazil's LGPD as
+            applied to publicly available information for research purposes (Art. 7, XI;
+            Art. 11, §2º, III).</li>
+          <li><strong>Outputs.</strong> Open working papers, a methods paper on detector
+            validation, and aggregated artifacts shared with Brazilian fact-checking
+            organizations (Aos Fatos, Comprova, Lupa).</li>
         </ul>
       </section>
 
@@ -129,14 +151,13 @@
         <div class="team-card">
           <div class="avatar">E</div>
           <div>
-            <strong>Eric Hovagim</strong> — Lead Researcher
+            <strong>Eric Hovagim</strong>, Lead Researcher
             <p class="muted">
               Department of Industrial Engineering and Operations Research (IEOR),
-              College of Engineering, University of California, Berkeley. Research
-              focus: computational detection of coordinated information operations,
-              election integrity, and platform governance. Developer of
-              <em>Vigia</em>, a defensive monitoring prototype for Portuguese-language
-              livestream and chat surfaces.
+              College of Engineering, University of California, Berkeley. His work
+              applies operations-research and machine-learning methods to detection
+              problems in large-scale information systems. He built Vigia, the
+              prototype monitoring system this program extends.
             </p>
           </div>
         </div>
@@ -148,7 +169,7 @@
         <p>
           <a href="mailto:ehovagim20@berkeley.edu">ehovagim20@berkeley.edu</a><br />
           University of California, Berkeley<br />
-          For program correspondence regarding this research application.
+          For correspondence regarding this research program.
         </p>
       </section>
     </main>
@@ -161,8 +182,8 @@
           state the researcher's affiliation.
         </p>
         <p>
-          Access request: Meta Content Library &amp; API, Meta Secure Research Environment ·
-          Application reference: Electoral Information Integrity Monitoring (Brazil 2026 runoff).
+          Access request: Meta Content Library &amp; API, Meta Secure Research Environment.
+          Application reference: Electoral Information Integrity Monitoring, Brazil 2026 runoff.
         </p>
       </div>
     </footer>

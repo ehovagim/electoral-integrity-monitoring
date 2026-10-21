@@ -6,6 +6,7 @@
     <title>Electoral Information Integrity Monitoring | UC Berkeley Research</title>
     <meta name="description"
       content="A defensive detection research program monitoring coordinated information operations during the 2026 Brazilian general election runoff. University of California, Berkeley." />
+    <link rel="canonical" href="https://oam.berkeley.help/" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
@@ -48,7 +49,7 @@
           Meta Secure Research Environment.
         </p>
         <div class="hero-facts">
-          <div><strong>Window</strong><span>Oct 20 – Nov 10, 2026</span></div>
+          <div><strong>Window</strong><span>Study: Sept 1 – Dec 31, 2026; live: Oct 24–26</span></div>
           <div><strong>Surfaces</strong><span>Public FB Pages &amp; Groups, Instagram, Ad Library</span></div>
           <div><strong>Posture</strong><span>Read-only, defensive, aggregate-only exports</span></div>
         </div>
@@ -81,45 +82,47 @@
       <section id="questions">
         <h2>Research questions</h2>
         <ol class="rq">
-          <li><strong>Prevalence.</strong> What is the measured volume and growth of
-            election-integrity-relevant public content (false-results claims, impersonation
-            of official bodies, vote-buying solicitation, incitement) during the blackout
-            and runoff window, compared to a baseline period?</li>
-          <li><strong>Coordination.</strong> To what extent do documented operation classes
-            (counterfeit broadcasts, rumor cascades, synthetic impersonation) show
-            cross-page and cross-platform coordination in public content metadata, such as
-            repeated text, synchronized timing, and shared link domains?</li>
-          <li><strong>Paid surface.</strong> What volume of paid political advertising is
-            delivered during the legally mandated blackout, when such delivery is itself a
-            TSE violation, and how is it distributed across advertisers and regions?</li>
-          <li><strong>Method.</strong> What precision and detection latency do transparent,
-            rule-based detectors achieve against researcher-verified ground truth during a
-            live event, and how should severity thresholds be calibrated for operational
-            monitoring?</li>
+          <li><strong>Volume and timing.</strong> How does the volume and timing of
+            election-related public content on Meta surfaces shift across the blackout
+            window and runoff day, and which topics dominate each period?</li>
+          <li><strong>Cross-surface diffusion.</strong> How quickly do documented
+            operation classes (counterfeit official broadcasts, coordinated rumor
+            cascades, synthetic-candidate impersonation, paid political content during
+            the blackout) move between live surfaces such as Twitch, Kick, and YouTube
+            and Meta surfaces, and does diffusion accelerate during the blackout?</li>
+          <li><strong>Detection validity.</strong> What precision and recall do
+            rule-based and model-assisted detection methods achieve against
+            researcher-verified ground truth for each operation class, and where do
+            they fail?</li>
         </ol>
       </section>
 
       <section id="methods">
         <h2>Methods</h2>
         <p>
-          The study uses quantitative content analysis with computational detection,
-          conducted entirely inside the Meta Secure Research Environment. Observation
-          covers a baseline week, the event window from blackout eve through
-          certification, and post-event weeks for lifecycle measurement.
+          The study runs in three phases: instrument development (through
+          mid-October 2026), live measurement during the blackout and runoff
+          weekend (October 24–26, 2026), and validation and write-up (November
+          2026 through early 2027). All collection and analysis happens inside
+          the Meta Secure Research Environment.
         </p>
         <ul>
           <li><strong>Collection.</strong> Read-only Content Library API queries in
             Portuguese: keyword and hashtag panels (fraude, apuração, resultado oficial,
             candidate and institution names), target panels of public pages and groups
             documented by Brazilian fact-checkers and the TSE, and Ad Library queries for
-            paid content. Retrieval stays within the 500,000-item weekly API budget.</li>
+            paid content. The study window runs September 1 through December 31, 2026,
+            with October–November 2024 as a historical baseline from the last municipal
+            election cycle. Retrieval stays within the 500,000-item weekly API budget.</li>
           <li><strong>Detection.</strong> Transparent detectors: near-duplicate text
             clustering, coordinated-timing cascades, impersonation heuristics, and
-            audience-anomaly signals. No generative models are used, and every verdict is
-            inspectable.</li>
+            audience-anomaly signals. Flags from our external livestream monitoring
+            (Vigia, covering Twitch, Kick, and YouTube) are used as seeds to find
+            cross-posted copies on Meta surfaces. No generative models are used, and
+            every verdict is inspectable.</li>
           <li><strong>Ground truth.</strong> Stratified samples of flagged clusters are
             independently coded against a published codebook. We report precision and
-            detection latency per detector class.</li>
+            recall per operation class, with detection latency for the live window.</li>
           <li><strong>Analysis.</strong> Volume curves by class and window, network
             analysis of cross-page content reuse, advertiser concentration, and detector
             evaluation.</li>
